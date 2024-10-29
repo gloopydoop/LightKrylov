@@ -1,0 +1,458 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Lightweight implementation of Krylov methods using modern Fortran.">
+    <meta name="author" content="nekstab/LightKrylov contributors" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>All Types &ndash; LightKrylov
+</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">LightKrylov </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" id='text'>
+			 <h1>Derived Types</h1>
+			 <table class="table table-striped nostretched">
+			 <thead>
+			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
+			 </thead><tbody>
+			   <tr>
+                 <td><a href='../type/abstract_hermitian_linop_cdp.html'>abstract_hermitian_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Abstract representation of an abstract hermitian (complex-valued) linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_hermitian_linop_csp.html'>abstract_hermitian_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Abstract representation of an abstract hermitian (complex-valued) linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_jacobian_linop_cdp.html'>abstract_jacobian_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Abstract type for the local linearization of the system around the state X</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_jacobian_linop_csp.html'>abstract_jacobian_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Abstract type for the local linearization of the system around the state X</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_jacobian_linop_rdp.html'>abstract_jacobian_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Abstract type for the local linearization of the system around the state X</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_jacobian_linop_rsp.html'>abstract_jacobian_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Abstract type for the local linearization of the system around the state X</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_linop.html'>abstract_linop</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td>None</td>
+                 <td><p>Base type to define an abstract linear operator. All other types defined in
+<code>LightKrylov</code> derive from this fundamental one.</p><a href="../type/abstract_linop.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop.html'>abstract_linop</a></td>
+                 <td><p>Base type to extend in order to define a complex(dp)-valued linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop.html'>abstract_linop</a></td>
+                 <td><p>Base type to extend in order to define a complex(sp)-valued linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop.html'>abstract_linop</a></td>
+                 <td><p>Base type to extend in order to define a real(dp)-valued linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop.html'>abstract_linop</a></td>
+                 <td><p>Base type to extend in order to define a real(sp)-valued linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td>None</td>
+                 <td><p>Abstract type container for options from which all others are being extended.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_precond_cdp.html'>abstract_precond_cdp</a></td>
+                 <td><a href='../module/lightkrylov_iterativesolvers.html'>LightKrylov_IterativeSolvers</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_precond_csp.html'>abstract_precond_csp</a></td>
+                 <td><a href='../module/lightkrylov_iterativesolvers.html'>LightKrylov_IterativeSolvers</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_precond_rdp.html'>abstract_precond_rdp</a></td>
+                 <td><a href='../module/lightkrylov_iterativesolvers.html'>LightKrylov_IterativeSolvers</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_precond_rsp.html'>abstract_precond_rsp</a></td>
+                 <td><a href='../module/lightkrylov_iterativesolvers.html'>LightKrylov_IterativeSolvers</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_sym_linop_rdp.html'>abstract_sym_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Abstract representation of an abstract symmetric (real valued) linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_sym_linop_rsp.html'>abstract_sym_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Abstract representation of an abstract symmetric (real valued) linear operator.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_system.html'>abstract_system</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_system_cdp.html'>abstract_system_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_system.html'>abstract_system</a></td>
+                 <td><p>System for Newton fixed-point iteration via the Jacobian</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_system_csp.html'>abstract_system_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_system.html'>abstract_system</a></td>
+                 <td><p>System for Newton fixed-point iteration via the Jacobian</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_system_rdp.html'>abstract_system_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_system.html'>abstract_system</a></td>
+                 <td><p>System for Newton fixed-point iteration via the Jacobian</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_system_rsp.html'>abstract_system_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractsystems.html'>LightKrylov_AbstractSystems</a></td>
+                 <td><a href='../type/abstract_system.html'>abstract_system</a></td>
+                 <td><p>System for Newton fixed-point iteration via the Jacobian</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_vector.html'>abstract_vector</a></td>
+                 <td><a href='../module/lightkrylov_abstractvectors.html'>LightKrylov_AbstractVectors</a></td>
+                 <td>None</td>
+                 <td><p>Base abstract type from which all other types of vectors used in <code>LightKrylov</code>
+are being derived from.</p><a href="../type/abstract_vector.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_vector_cdp.html'>abstract_vector_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractvectors.html'>LightKrylov_AbstractVectors</a></td>
+                 <td><a href='../type/abstract_vector.html'>abstract_vector</a></td>
+                 <td><p>Abstract type to define complex(dp)-valued vectors.
+Derived-types defined by the user should be extending one such class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_vector_csp.html'>abstract_vector_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractvectors.html'>LightKrylov_AbstractVectors</a></td>
+                 <td><a href='../type/abstract_vector.html'>abstract_vector</a></td>
+                 <td><p>Abstract type to define complex(sp)-valued vectors.
+Derived-types defined by the user should be extending one such class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_vector_rdp.html'>abstract_vector_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractvectors.html'>LightKrylov_AbstractVectors</a></td>
+                 <td><a href='../type/abstract_vector.html'>abstract_vector</a></td>
+                 <td><p>Abstract type to define real(dp)-valued vectors.
+Derived-types defined by the user should be extending one such class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/abstract_vector_rsp.html'>abstract_vector_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractvectors.html'>LightKrylov_AbstractVectors</a></td>
+                 <td><a href='../type/abstract_vector.html'>abstract_vector</a></td>
+                 <td><p>Abstract type to define real(sp)-valued vectors.
+Derived-types defined by the user should be extending one such class.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/adjoint_linop_cdp.html'>adjoint_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Utility type to define an adjoint linear operator. The definition of <code>matvec</code> and <code>rmatvec</code>
+are directly inherited from those used to define <code>A</code>. Note that this utility does not
+compute the adjoint for you. It simply provides a utility to define a new operator
+with <code>matvec</code> and <code>rmatvec</code> being switched.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/adjoint_linop_csp.html'>adjoint_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Utility type to define an adjoint linear operator. The definition of <code>matvec</code> and <code>rmatvec</code>
+are directly inherited from those used to define <code>A</code>. Note that this utility does not
+compute the adjoint for you. It simply provides a utility to define a new operator
+with <code>matvec</code> and <code>rmatvec</code> being switched.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/adjoint_linop_rdp.html'>adjoint_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Utility type to define an adjoint linear operator. The definition of <code>matvec</code> and <code>rmatvec</code>
+are directly inherited from those used to define <code>A</code>. Note that this utility does not
+compute the adjoint for you. It simply provides a utility to define a new operator
+with <code>matvec</code> and <code>rmatvec</code> being switched.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/adjoint_linop_rsp.html'>adjoint_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Utility type to define an adjoint linear operator. The definition of <code>matvec</code> and <code>rmatvec</code>
+are directly inherited from those used to define <code>A</code>. Note that this utility does not
+compute the adjoint for you. It simply provides a utility to define a new operator
+with <code>matvec</code> and <code>rmatvec</code> being switched.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/axpby_linop_cdp.html'>axpby_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Utility type to define a composite linear operator <script type="math/tex"> \mathbf{C} = \alpha \mathbf{A} + \beta \mathbf{B} </script>.
+The definitions of <code>matvec</code> and <code>rmatvec</code> are directly inherited from those used to
+define <code>A</code> and <code>B</code>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/axpby_linop_csp.html'>axpby_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Utility type to define a composite linear operator <script type="math/tex"> \mathbf{C} = \alpha \mathbf{A} + \beta \mathbf{B} </script>.
+The definitions of <code>matvec</code> and <code>rmatvec</code> are directly inherited from those used to
+define <code>A</code> and <code>B</code>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/axpby_linop_rdp.html'>axpby_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Utility type to define a composite linear operator <script type="math/tex"> \mathbf{C} = \alpha \mathbf{A} + \beta \mathbf{B} </script>.
+The definitions of <code>matvec</code> and <code>rmatvec</code> are directly inherited from those used to
+define <code>A</code> and <code>B</code>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/axpby_linop_rsp.html'>axpby_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Utility type to define a composite linear operator <script type="math/tex"> \mathbf{C} = \alpha \mathbf{A} + \beta \mathbf{B} </script>.
+The definitions of <code>matvec</code> and <code>rmatvec</code> are directly inherited from those used to
+define <code>A</code> and <code>B</code>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/cg_dp_opts.html'>cg_dp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>Conjugate gradient options.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/cg_sp_opts.html'>cg_sp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>Conjugate gradient options.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/gmres_dp_opts.html'>gmres_dp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>GMRES options.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/gmres_sp_opts.html'>gmres_sp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>GMRES options.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/id_cdp.html'>Id_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Utility type to define the Identity operator. Note that the type-bound procedures
+for <code>matvec</code> and <code>rmatvec</code> do not have to be defined by the user.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/id_csp.html'>Id_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Utility type to define the Identity operator. Note that the type-bound procedures
+for <code>matvec</code> and <code>rmatvec</code> do not have to be defined by the user.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/id_rdp.html'>Id_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Utility type to define the Identity operator. Note that the type-bound procedures
+for <code>matvec</code> and <code>rmatvec</code> do not have to be defined by the user.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/id_rsp.html'>Id_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Utility type to define the Identity operator. Note that the type-bound procedures
+for <code>matvec</code> and <code>rmatvec</code> do not have to be defined by the user.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/newton_dp_opts.html'>newton_dp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>Options for Newton-Krylov fixed-point iteration.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/newton_sp_opts.html'>newton_sp_opts</a></td>
+                 <td><a href='../module/lightkrylov_utils.html'>LightKrylov_utils</a></td>
+                 <td><a href='../type/abstract_opts.html'>abstract_opts</a></td>
+                 <td><p>Options for Newton-Krylov fixed-point iteration.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/scaled_linop_cdp.html'>scaled_linop_cdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_cdp.html'>abstract_linop_cdp</a></td>
+                 <td><p>Defines a scaled linear operator <script type="math/tex"> \mathbf{B} = \sigma \mathbf{A} </script> with <script type="math/tex"> \mathbf{A} </script> a complex-valued operator and <script type="math/tex"> \sigma \in \mathbb{C} </script>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/scaled_linop_csp.html'>scaled_linop_csp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_csp.html'>abstract_linop_csp</a></td>
+                 <td><p>Defines a scaled linear operator <script type="math/tex"> \mathbf{B} = \sigma \mathbf{A} </script> with <script type="math/tex"> \mathbf{A} </script> a complex-valued operator and <script type="math/tex"> \sigma \in \mathbb{C} </script>.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/scaled_linop_rdp.html'>scaled_linop_rdp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rdp.html'>abstract_linop_rdp</a></td>
+                 <td><p>Defines a scaled linear operator <script type="math/tex"> \mathbf{B} = \sigma \mathbf{A} </script> with <script type="math/tex"> \mathbf{A} </script> a real-valued operator and <script type="math/tex"> \sigma \in \mathbb{R} </script>. The definitions of <code>matvec</code>
+and <code>rmatvec</code> are directly inherited from those used to define <code>A</code> and do not have to
+be defined by the user.</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/scaled_linop_rsp.html'>scaled_linop_rsp</a></td>
+                 <td><a href='../module/lightkrylov_abstractlinops.html'>LightKrylov_AbstractLinops</a></td>
+                 <td><a href='../type/abstract_linop_rsp.html'>abstract_linop_rsp</a></td>
+                 <td><p>Defines a scaled linear operator <script type="math/tex"> \mathbf{B} = \sigma \mathbf{A} </script> with <script type="math/tex"> \mathbf{A} </script> a real-valued operator and <script type="math/tex"> \sigma \in \mathbb{R} </script>. The definitions of <code>matvec</code>
+and <code>rmatvec</code> are directly inherited from those used to define <code>A</code> and do not have to
+be defined by the user.</p></td>
+               </tr>
+			 </tbody></table>
+             
+        </div>
+      </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              LightKrylov
+ was developed by nekstab/LightKrylov contributors<br>              &copy; 2024 <a rel="license" href="http://www.freebsd.org/copyright/freebsd-doc-license.html">FreeBSD Documentation License</a>
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-10-29T12:53:21.189588 <br>&copy; <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
