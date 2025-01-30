@@ -2289,6 +2289,8 @@ contains
             select type (options)
             type is (gmres_sp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_sp_opts', this_module, 'gmres_rsp')
             end select
         else
             opts = gmres_sp_opts()
@@ -2418,8 +2420,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_sp_metadata)
-                    meta = gmres_meta
+              type is (gmres_sp_metadata)
+              meta = gmres_meta
+           class default
+               call stop_error('The intent(out) metadata must be of type gmres_sp_metadata. No metadata returned', this_module,&
+                   & 'gmres_rsp')
            end select
         end if
 
@@ -2487,6 +2492,8 @@ contains
             select type (options)
             type is (gmres_dp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_dp_opts', this_module, 'gmres_rdp')
             end select
         else
             opts = gmres_dp_opts()
@@ -2616,8 +2623,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_dp_metadata)
-                    meta = gmres_meta
+              type is (gmres_dp_metadata)
+              meta = gmres_meta
+           class default
+               call stop_error('The intent(out) metadata must be of type gmres_dp_metadata. No metadata returned', this_module,&
+                   & 'gmres_rdp')
            end select
         end if
 
@@ -2685,6 +2695,8 @@ contains
             select type (options)
             type is (gmres_sp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_sp_opts', this_module, 'gmres_csp')
             end select
         else
             opts = gmres_sp_opts()
@@ -2814,8 +2826,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_sp_metadata)
-                    meta = gmres_meta
+              type is (gmres_sp_metadata)
+              meta = gmres_meta
+           class default
+               call stop_error('The intent(out) metadata must be of type gmres_sp_metadata. No metadata returned', this_module,&
+                   & 'gmres_csp')
            end select
         end if
 
@@ -2883,6 +2898,8 @@ contains
             select type (options)
             type is (gmres_dp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_dp_opts', this_module, 'gmres_cdp')
             end select
         else
             opts = gmres_dp_opts()
@@ -3012,8 +3029,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_dp_metadata)
-                    meta = gmres_meta
+              type is (gmres_dp_metadata)
+              meta = gmres_meta
+           class default
+               call stop_error('The intent(out) metadata must be of type gmres_dp_metadata. No metadata returned', this_module,&
+                   & 'gmres_cdp')
            end select
         end if
 
@@ -3092,6 +3112,8 @@ contains
             select type (options)
             type is (gmres_sp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_sp_opts.', this_module, 'fgmres_rsp')
             end select
         else
             opts = gmres_sp_opts()
@@ -3220,9 +3242,12 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_sp_metadata)
-                    meta = gmres_meta
-           end select
+              type is (gmres_sp_metadata)
+              meta = gmres_meta
+            class default
+               call stop_error('The intent(out) metadata must be of type gmres_sp_metadata. No metadata returned', this_module,&
+                   & 'fgmres_rsp')
+            end select
         end if
 
         call A%reset_counter(trans, 'gmres%post')
@@ -3292,6 +3317,8 @@ contains
             select type (options)
             type is (gmres_dp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_dp_opts.', this_module, 'fgmres_rdp')
             end select
         else
             opts = gmres_dp_opts()
@@ -3420,9 +3447,12 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_dp_metadata)
-                    meta = gmres_meta
-           end select
+              type is (gmres_dp_metadata)
+              meta = gmres_meta
+            class default
+               call stop_error('The intent(out) metadata must be of type gmres_dp_metadata. No metadata returned', this_module,&
+                   & 'fgmres_rdp')
+            end select
         end if
 
         call A%reset_counter(trans, 'gmres%post')
@@ -3492,6 +3522,8 @@ contains
             select type (options)
             type is (gmres_sp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_sp_opts.', this_module, 'fgmres_csp')
             end select
         else
             opts = gmres_sp_opts()
@@ -3620,9 +3652,12 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_sp_metadata)
-                    meta = gmres_meta
-           end select
+              type is (gmres_sp_metadata)
+              meta = gmres_meta
+            class default
+               call stop_error('The intent(out) metadata must be of type gmres_sp_metadata. No metadata returned', this_module,&
+                   & 'fgmres_csp')
+            end select
         end if
 
         call A%reset_counter(trans, 'gmres%post')
@@ -3692,6 +3727,8 @@ contains
             select type (options)
             type is (gmres_dp_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_dp_opts.', this_module, 'fgmres_cdp')
             end select
         else
             opts = gmres_dp_opts()
@@ -3820,9 +3857,12 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_dp_metadata)
-                    meta = gmres_meta
-           end select
+              type is (gmres_dp_metadata)
+              meta = gmres_meta
+            class default
+               call stop_error('The intent(out) metadata must be of type gmres_dp_metadata. No metadata returned', this_module,&
+                   & 'fgmres_cdp')
+            end select
         end if
 
         call A%reset_counter(trans, 'gmres%post')
@@ -3956,8 +3996,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-               type is (cg_sp_metadata)
-                   meta = cg_meta
+           type is (cg_sp_metadata)
+               meta = cg_meta
+           class default
+               call stop_error('The intent(OUT) metadata must be of type cg_sp_metadata. No metadata returned', this_module,&
+                   & 'cg_rsp')
            end select
         end if
 
@@ -4085,8 +4128,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-               type is (cg_dp_metadata)
-                   meta = cg_meta
+           type is (cg_dp_metadata)
+               meta = cg_meta
+           class default
+               call stop_error('The intent(OUT) metadata must be of type cg_dp_metadata. No metadata returned', this_module,&
+                   & 'cg_rdp')
            end select
         end if
 
@@ -4214,8 +4260,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-               type is (cg_sp_metadata)
-                   meta = cg_meta
+           type is (cg_sp_metadata)
+               meta = cg_meta
+           class default
+               call stop_error('The intent(OUT) metadata must be of type cg_sp_metadata. No metadata returned', this_module,&
+                   & 'cg_csp')
            end select
         end if
 
@@ -4343,8 +4392,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-               type is (cg_dp_metadata)
-                   meta = cg_meta
+           type is (cg_dp_metadata)
+               meta = cg_meta
+           class default
+               call stop_error('The intent(OUT) metadata must be of type cg_dp_metadata. No metadata returned', this_module,&
+                   & 'cg_cdp')
            end select
         end if
 

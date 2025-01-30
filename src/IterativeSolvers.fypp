@@ -1036,6 +1036,8 @@ contains
             select type (options)
             type is (gmres_${kind}$_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_${kind}$_opts', this_module, 'gmres_${type[0]}$${kind}$')
             end select
         else
             opts = gmres_${kind}$_opts()
@@ -1165,8 +1167,10 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_${kind}$_metadata)
-                    meta = gmres_meta
+              type is (gmres_${kind}$_metadata)
+              meta = gmres_meta
+           class default
+               call stop_error('The intent(out) metadata must be of type gmres_${kind}$_metadata. No metadata returned', this_module, 'gmres_${type[0]}$${kind}$')
            end select
         end if
 
@@ -1247,6 +1251,8 @@ contains
             select type (options)
             type is (gmres_${kind}$_opts)
                 opts = options
+            class default
+               call stop_error('The options must be of type gmres_${kind}$_opts.', this_module, 'fgmres_${type[0]}$${kind}$')
             end select
         else
             opts = gmres_${kind}$_opts()
@@ -1375,9 +1381,11 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-                 type is (gmres_${kind}$_metadata)
-                    meta = gmres_meta
-           end select
+              type is (gmres_${kind}$_metadata)
+              meta = gmres_meta
+            class default
+               call stop_error('The intent(out) metadata must be of type gmres_${kind}$_metadata. No metadata returned', this_module, 'fgmres_${type[0]}$${kind}$')
+            end select
         end if
 
         call A%reset_counter(trans, 'gmres%post')
@@ -1521,8 +1529,10 @@ contains
         ! Set metadata output
         if (present(meta)) then
            select type(meta)
-               type is (cg_${kind}$_metadata)
-                   meta = cg_meta
+           type is (cg_${kind}$_metadata)
+               meta = cg_meta
+           class default
+               call stop_error('The intent(OUT) metadata must be of type cg_${kind}$_metadata. No metadata returned', this_module, 'cg_${type[0]}$${kind}$')
            end select
         end if
 

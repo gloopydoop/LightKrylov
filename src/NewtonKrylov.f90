@@ -194,6 +194,7 @@ contains
          write(msg,'(A)') 'Initial guess is a fixed point to tolerance!'
          call logger%log_warning(msg, module=this_module, procedure='newton_rsp')
          newton_meta%converged = .true.
+         newton_meta%new_solution = .false.
          return
       end if
 
@@ -268,8 +269,11 @@ contains
       ! Set metadata output
       if (present(meta)) then
          select type(meta)
-            type is (newton_sp_metadata)
-               meta = newton_meta
+         type is (newton_sp_metadata)
+            meta = newton_meta
+         class default
+            call stop_error('The intent(out) metadata must be of type newton_sp_metadata. No data returned', this_module,&
+                & 'newton_rsp')
          end select
       end if
 
@@ -359,6 +363,7 @@ contains
          write(msg,'(A)') 'Initial guess is a fixed point to tolerance!'
          call logger%log_warning(msg, module=this_module, procedure='newton_rdp')
          newton_meta%converged = .true.
+         newton_meta%new_solution = .false.
          return
       end if
 
@@ -433,8 +438,11 @@ contains
       ! Set metadata output
       if (present(meta)) then
          select type(meta)
-            type is (newton_dp_metadata)
-               meta = newton_meta
+         type is (newton_dp_metadata)
+            meta = newton_meta
+         class default
+            call stop_error('The intent(out) metadata must be of type newton_dp_metadata. No data returned', this_module,&
+                & 'newton_rdp')
          end select
       end if
 
@@ -524,6 +532,7 @@ contains
          write(msg,'(A)') 'Initial guess is a fixed point to tolerance!'
          call logger%log_warning(msg, module=this_module, procedure='newton_csp')
          newton_meta%converged = .true.
+         newton_meta%new_solution = .false.
          return
       end if
 
@@ -598,8 +607,11 @@ contains
       ! Set metadata output
       if (present(meta)) then
          select type(meta)
-            type is (newton_sp_metadata)
-               meta = newton_meta
+         type is (newton_sp_metadata)
+            meta = newton_meta
+         class default
+            call stop_error('The intent(out) metadata must be of type newton_sp_metadata. No data returned', this_module,&
+                & 'newton_csp')
          end select
       end if
 
@@ -689,6 +701,7 @@ contains
          write(msg,'(A)') 'Initial guess is a fixed point to tolerance!'
          call logger%log_warning(msg, module=this_module, procedure='newton_cdp')
          newton_meta%converged = .true.
+         newton_meta%new_solution = .false.
          return
       end if
 
@@ -763,8 +776,11 @@ contains
       ! Set metadata output
       if (present(meta)) then
          select type(meta)
-            type is (newton_dp_metadata)
-               meta = newton_meta
+         type is (newton_dp_metadata)
+            meta = newton_meta
+         class default
+            call stop_error('The intent(out) metadata must be of type newton_dp_metadata. No data returned', this_module,&
+                & 'newton_cdp')
          end select
       end if
 
