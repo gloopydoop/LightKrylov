@@ -1081,7 +1081,7 @@ module LightKrylov_IterativeSolvers
         !!  ### Syntax
         !!
         !!  ```fortran
-        !!      call svds(A, U, S, V, residuals, info [, kdim] [,tolerance])
+        !!      call svds(A, U, S, V, residuals, info [, u0] [, kdim] [, tolerance] [, write_intermediate])
         !!  ```
         !!
         !!  ### Arguments
@@ -1106,12 +1106,21 @@ module LightKrylov_IterativeSolvers
         !!
         !!  - `info`    :   `integer` Information flag.
         !!
+        !!  - `u0` (*optional*)    :    `abstract_vector` with the same type and kind as `A` to use as initial vector for the 
+        !!                              iterative solver. This is an `intent(in)` argument. By default, if no initial condition
+        !!                              is passed to the algorithm, it is initialized with a random vector.
+        !!
         !!  - `kdim` (*optional*)   :   `integer`, maximum dimension of the Krylov subspace used to
         !!                              approximate the leading singular triplets. It is an `intent(in)`
         !!                              argument. By default, `kdim = 4*size(X)`.
         !!
         !!  - `tolerance` (*optional*)  :   `real` tolerance below which a triplet is considered as being converged. It is an
-        !!                                  `intent(in)` agument. By default, tolerance = rtol_sp` or `tolerance = rtol_dp`.
+        !!                                  `intent(in)` argument. By default, tolerance = rtol_sp` or `tolerance = rtol_dp`.
+        !!
+        !!  - `write_intermediate` (*optional*)  :   `logical`, flag to enable output of the approximation of the singular values
+        !!                                           at each iteration to a text file including the residual and convergence status.
+        !!                                           It is an `intent(in)` argument. By default, no intermediate data is saved.
+        !!
         !!  @note
         !!  This implementation does not currently include an automatic restarting procedure
         !!  such as `krylov_schur` for `eigs`. This is work in progress.
@@ -1135,7 +1144,7 @@ module LightKrylov_IterativeSolvers
             real(sp), optional, intent(in) :: tolerance
             !! Tolerance.
             logical, optional, intent(in) :: write_intermediate
-            !! Write intermediate eigenvalues to file during iteration?
+            !! Write intermediate singular values to file during iteration?
         end subroutine
         module subroutine svds_rdp(A, U, S, V, residuals, info, u0, kdim, tolerance, write_intermediate)
             class(abstract_linop_rdp), intent(inout) :: A
@@ -1156,7 +1165,7 @@ module LightKrylov_IterativeSolvers
             real(dp), optional, intent(in) :: tolerance
             !! Tolerance.
             logical, optional, intent(in) :: write_intermediate
-            !! Write intermediate eigenvalues to file during iteration?
+            !! Write intermediate singular values to file during iteration?
         end subroutine
         module subroutine svds_csp(A, U, S, V, residuals, info, u0, kdim, tolerance, write_intermediate)
             class(abstract_linop_csp), intent(inout) :: A
@@ -1177,7 +1186,7 @@ module LightKrylov_IterativeSolvers
             real(sp), optional, intent(in) :: tolerance
             !! Tolerance.
             logical, optional, intent(in) :: write_intermediate
-            !! Write intermediate eigenvalues to file during iteration?
+            !! Write intermediate singular values to file during iteration?
         end subroutine
         module subroutine svds_cdp(A, U, S, V, residuals, info, u0, kdim, tolerance, write_intermediate)
             class(abstract_linop_cdp), intent(inout) :: A
@@ -1198,7 +1207,7 @@ module LightKrylov_IterativeSolvers
             real(dp), optional, intent(in) :: tolerance
             !! Tolerance.
             logical, optional, intent(in) :: write_intermediate
-            !! Write intermediate eigenvalues to file during iteration?
+            !! Write intermediate singular values to file during iteration?
         end subroutine
     end interface
 
@@ -1231,7 +1240,7 @@ module LightKrylov_IterativeSolvers
         !!  ### Syntax
         !!
         !!  ```fortran
-        !!      call eighs(A, X, eigvals, residuals, info [, kdim] [,tolerance])
+        !!      call eighs(A, X, eigvals, residuals, info [, x0] [, kdim] [,tolerance] [, write_intermediate])
         !!  ```
         !!
         !!  ### Arguments
@@ -1252,13 +1261,24 @@ module LightKrylov_IterativeSolvers
         !!
         !!  - `info`    :   `integer` Information flag.
         !!
+        !!  - `x0` (*optional*)    :    `abstract_vector` with the same type and kind as `A` to use as initial vector for the 
+        !!                              iterative solver. This is an `intent(in)` argument. By default, if no initial condition
+        !!                              is passed to the algorithm, it is initialized with a random vector.
+        !!
         !!  - `kdim` (*optional*)   :   `integer`, maximum dimension of the Krylov subspace used to
         !!                              approximate the leading eigenpairs. It is an `intent(in)`
         !!                              argument. By default, `kdim = 4*size(X)`.
         !!
         !!  - `tolerance` (*optional*)  :   `real` tolerance below which an eigenpair is considered as
-        !!                                  being converged. It is an `intent(in)` agument. By default,
+        !!                                  being converged. It is an `intent(in)` argument. By default,
         !!                                  `tolerance = rtol_sp` or `tolerance = rtol_dp`.
+        !!
+        !!  - `write_intermediate` (*optional*)  :   `logical`, flag to enable output of the approximation
+        !!                                           of the eigenvalues at each iteration to a text file
+        !!                                           including the residual and convergence status. It is
+        !!                                           an `intent(in)` argument. By default, no intermediate
+        !!                                           data is saved.
+        !!
         !!  @note
         !!  This implementation does not currently include an automatic restarting procedure
         !!  such as `krylov_schur` for `eigs`. This is work in progress.
@@ -1436,7 +1456,7 @@ module LightKrylov_IterativeSolvers
         !!  ### Syntax
         !!
         !!  ```fortran
-        !!      call eigs(A, X, eigvals, residuals, info [, kdim] [, select] [,tolerance] [, transpose])
+        !!      call eigs(A, X, eigvals, residuals, info [, x0] [, kdim] [, select] [,tolerance] [, transpose] [, write_intermediate])
         !!  ```
         !!
         !!  ### Arguments
@@ -1457,6 +1477,10 @@ module LightKrylov_IterativeSolvers
         !!
         !!  - `info`    :   `integer` Information flag.
         !!
+        !!  - `x0` (*optional*)    :    `abstract_vector` with the same type and kind as `A` to use as initial vector for the 
+        !!                              iterative solver. This is an `intent(in)` argument. By default, if no initial condition
+        !!                              is passed to the algorithm, it is initialized with a random vector.
+        !!
         !!  - `kdim` (*optional*)   :   `integer`, maximum dimension of the Krylov subspace used to
         !!                              approximate the leading eigenpairs. It is an `intent(in)`
         !!                              argument. By default, `kdim = 4*size(X)`.
@@ -1464,11 +1488,18 @@ module LightKrylov_IterativeSolvers
         !!  - `select` (*optional*) : Function to select which eigenvalues to compute.
         !!
         !!  - `tolerance` (*optional*)  :   `real` tolerance below which an eigenpair is considered as
-        !!                                  being converged. It is an `intent(in)` agument. By default,
+        !!                                  being converged. It is an `intent(in)` argument. By default,
         !!                                  `tolerance = rtol_sp` or `tolerance = rtol_dp`.
         !!
         !!  - `transpose` (*optional*)  :   `logical` flag determining whether the eigenvalues of \(A\)
-        !!                             or \(A^H\) need to be computed.
+        !!                                  or \(A^H\) need to be computed.
+        !!
+        !!  - `write_intermediate` (*optional*)  :   `logical`, flag to enable output of the approximation
+        !!                                           of the eigenvalues at each iteration to a text file
+        !!                                           including the residual and convergence status. It is
+        !!                                           an `intent(in)` argument. By default, no intermediate
+        !!                                           data is saved.
+        !!
         module procedure eigs_rsp
         module procedure eigs_rdp
         module procedure eigs_csp
