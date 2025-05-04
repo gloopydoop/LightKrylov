@@ -1176,7 +1176,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_rsp) ! y = y + X[i]*v[i]
@@ -1206,7 +1206,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)))
+            allocate(Y(size(B, 2)), source=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1298,7 +1298,7 @@ contains
 
     impure elemental subroutine copy_vector_rsp(out, from)
         class(abstract_vector_rsp), intent(in) :: from
-        class(abstract_vector_rsp), intent(inout) :: out
+        class(abstract_vector_rsp), intent(out) :: out
         ! Copy array.
         call out%axpby(one_rsp, from, zero_rsp)
     end subroutine copy_vector_rsp
@@ -1330,7 +1330,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_rdp) ! y = y + X[i]*v[i]
@@ -1360,7 +1360,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)))
+            allocate(Y(size(B, 2)), source=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1452,7 +1452,7 @@ contains
 
     impure elemental subroutine copy_vector_rdp(out, from)
         class(abstract_vector_rdp), intent(in) :: from
-        class(abstract_vector_rdp), intent(inout) :: out
+        class(abstract_vector_rdp), intent(out) :: out
         ! Copy array.
         call out%axpby(one_rdp, from, zero_rdp)
     end subroutine copy_vector_rdp
@@ -1484,7 +1484,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_csp) ! y = y + X[i]*v[i]
@@ -1514,7 +1514,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)))
+            allocate(Y(size(B, 2)), source=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1606,7 +1606,7 @@ contains
 
     impure elemental subroutine copy_vector_csp(out, from)
         class(abstract_vector_csp), intent(in) :: from
-        class(abstract_vector_csp), intent(inout) :: out
+        class(abstract_vector_csp), intent(out) :: out
         ! Copy array.
         call out%axpby(one_csp, from, zero_csp)
     end subroutine copy_vector_csp
@@ -1638,7 +1638,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_cdp) ! y = y + X[i]*v[i]
@@ -1668,7 +1668,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)))
+            allocate(Y(size(B, 2)), source=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1760,7 +1760,7 @@ contains
 
     impure elemental subroutine copy_vector_cdp(out, from)
         class(abstract_vector_cdp), intent(in) :: from
-        class(abstract_vector_cdp), intent(inout) :: out
+        class(abstract_vector_cdp), intent(out) :: out
         ! Copy array.
         call out%axpby(one_cdp, from, zero_cdp)
     end subroutine copy_vector_cdp
