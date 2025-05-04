@@ -671,7 +671,7 @@ contains
 
     impure elemental subroutine copy_vector_${type[0]}$${kind}$(out, from)
         class(abstract_vector_${type[0]}$${kind}$), intent(in) :: from
-        class(abstract_vector_${type[0]}$${kind}$), intent(out) :: out
+        class(abstract_vector_${type[0]}$${kind}$), intent(inout) :: out
         ! Copy array.
         call out%axpby(one_${type[0]}$${kind}$, from, zero_${type[0]}$${kind}$)
     end subroutine copy_vector_${type[0]}$${kind}$
