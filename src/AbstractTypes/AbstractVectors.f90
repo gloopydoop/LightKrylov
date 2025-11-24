@@ -1028,7 +1028,7 @@ contains
         class(abstract_vector_rdp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_rdp)
+        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_rdp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1102,7 +1102,7 @@ contains
         class(abstract_vector_csp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_csp)
+        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_csp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1176,7 +1176,7 @@ contains
         class(abstract_vector_cdp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_cdp)
+        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_cdp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
