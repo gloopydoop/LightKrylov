@@ -437,7 +437,7 @@ contains
         class(abstract_vector_${type[0]}$${kind}$), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, mold=X)
+        allocate(Xin, mold=X); call copy(Xin, X)
         allocate(residual, mold=X); call residual%zero()
         step    = one_${type[0]}$${kind}$
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi

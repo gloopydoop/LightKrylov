@@ -340,6 +340,7 @@ contains
         allocate(R(p, p)) ; allocate(perm(p)) ; allocate(ptrans(p))
         allocate(X(p*(nk+1)), mold=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
         allocate(E(p*(nk+1), p*(nk+1)))
+        call copy(X(p*(nk+1)), B(1))
 
         ! Scratch arrays.
         allocate(Xwrk(p), mold=B) ; allocate(Cwrk(p), mold=B(1))
@@ -596,6 +597,7 @@ contains
         allocate(R(p, p)) ; allocate(perm(p)) ; allocate(ptrans(p))
         allocate(X(p*(nk+1)), mold=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
         allocate(E(p*(nk+1), p*(nk+1)))
+        call copy(X(p*(nk+1)), B(1))
 
         ! Scratch arrays.
         allocate(Xwrk(p), mold=B) ; allocate(Cwrk(p), mold=B(1))
@@ -852,6 +854,7 @@ contains
         allocate(R(p, p)) ; allocate(perm(p)) ; allocate(ptrans(p))
         allocate(X(p*(nk+1)), mold=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
         allocate(E(p*(nk+1), p*(nk+1)))
+        call copy(X(p*(nk+1)), B(1))
 
         ! Scratch arrays.
         allocate(Xwrk(p), mold=B) ; allocate(Cwrk(p), mold=B(1))
@@ -1108,6 +1111,7 @@ contains
         allocate(R(p, p)) ; allocate(perm(p)) ; allocate(ptrans(p))
         allocate(X(p*(nk+1)), mold=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
         allocate(E(p*(nk+1), p*(nk+1)))
+        call copy(X(p*(nk+1)), B(1))
 
         ! Scratch arrays.
         allocate(Xwrk(p), mold=B) ; allocate(Cwrk(p), mold=B(1))

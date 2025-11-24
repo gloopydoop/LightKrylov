@@ -1041,7 +1041,7 @@ contains
         class(abstract_vector_rsp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, mold=X)
+        allocate(Xin, mold=X); call copy(Xin, X)
         allocate(residual, mold=X); call residual%zero()
         step    = one_rsp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
@@ -1140,7 +1140,7 @@ contains
         class(abstract_vector_rdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, mold=X)
+        allocate(Xin, mold=X); call copy(Xin, X)
         allocate(residual, mold=X); call residual%zero()
         step    = one_rdp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
@@ -1239,7 +1239,7 @@ contains
         class(abstract_vector_csp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, mold=X)
+        allocate(Xin, mold=X); call copy(Xin, X)
         allocate(residual, mold=X); call residual%zero()
         step    = one_csp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
@@ -1338,7 +1338,7 @@ contains
         class(abstract_vector_cdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, mold=X)
+        allocate(Xin, mold=X); call copy(Xin, X)
         allocate(residual, mold=X); call residual%zero()
         step    = one_cdp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
