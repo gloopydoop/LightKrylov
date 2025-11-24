@@ -956,7 +956,7 @@ contains
         class(abstract_vector_rsp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_rsp)
+        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_rsp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
