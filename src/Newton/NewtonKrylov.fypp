@@ -301,8 +301,8 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X); call residual%zero()
-        allocate(increment,source=X); call increment%zero()
+        allocate(residual, mold=X); call residual%zero()
+        allocate(increment,mold=X); call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_${kind}$_metadata()
         call sys%reset_eval_counter('newton%init')
@@ -437,8 +437,8 @@ contains
         class(abstract_vector_${type[0]}$${kind}$), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, source=X)
-        allocate(residual, source=X); call residual%zero()
+        allocate(Xin, mold=X)
+        allocate(residual, mold=X); call residual%zero()
         step    = one_${type[0]}$${kind}$
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
         invphi2 = (3.0 - sqrt(5.0))/2.0  ! 1 / phi**2

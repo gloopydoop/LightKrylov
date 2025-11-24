@@ -168,8 +168,8 @@ contains
         info = 0
 
         ! Allocate arrays.
-        allocate(X(nk+1), source=b) ; allocate(H(nk+1, nk+1))
-        allocate(E(nk+1, nk+1)) ; allocate(Xwrk, source=b)
+        allocate(X(nk+1), mold=b) ; allocate(H(nk+1, nk+1))
+        allocate(E(nk+1, nk+1)) ; allocate(Xwrk, mold=b)
 
         ! Normalize input vector and initialize Krylov subspace.
         beta = b%norm()
@@ -276,11 +276,11 @@ contains
 
         ! Allocate arrays.
         allocate(R(p, p)) ; allocate(perm(p)) ; allocate(ptrans(p))
-        allocate(X(p*(nk+1)), source=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
+        allocate(X(p*(nk+1)), mold=B(1)) ; allocate(H(p*(nk+1), p*(nk+1)))
         allocate(E(p*(nk+1), p*(nk+1)))
 
         ! Scratch arrays.
-        allocate(Xwrk(p), source=B) ; allocate(Cwrk(p), source=B(1))
+        allocate(Xwrk(p), mold=B) ; allocate(Cwrk(p), mold=B(1))
 
         ! Normalize input matrix and initialize Krylov subspace.
         R = 0.0_${kind}$

@@ -956,7 +956,7 @@ contains
         class(abstract_vector_rsp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_rsp)
+        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_rsp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1028,7 +1028,7 @@ contains
         class(abstract_vector_rdp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_rdp)
+        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_rdp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1102,7 +1102,7 @@ contains
         class(abstract_vector_csp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_csp)
+        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_csp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1176,7 +1176,7 @@ contains
         class(abstract_vector_cdp), intent(in) :: vec
         integer :: n, m
         m = vec%get_size()
-        if(.not. allocated(self%data)) allocate(self%data(m), source=zero_cdp)
+        if(.not. allocated(self%data)) allocate(self%data(m), mold=zero_cdp)
         n = self%get_size()
         if (m /= n) call stop_error("Inconsistent size between the two vectors.")
 
@@ -1238,7 +1238,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, mold=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_rsp) ! y = y + X[i]*v[i]
@@ -1267,7 +1267,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1))
+            allocate(Y(size(B, 2)), mold=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1392,7 +1392,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, mold=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_rdp) ! y = y + X[i]*v[i]
@@ -1421,7 +1421,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1))
+            allocate(Y(size(B, 2)), mold=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1546,7 +1546,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, mold=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_csp) ! y = y + X[i]*v[i]
@@ -1575,7 +1575,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1))
+            allocate(Y(size(B, 2)), mold=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1700,7 +1700,7 @@ contains
         endif
 
         ! Initialize output vector.
-        if (.not. allocated(y)) allocate(y, source=X(1)) ; call y%zero()
+        if (.not. allocated(y)) allocate(y, mold=X(1)) ; call y%zero()
         ! Compute linear combination.
         do i = 1, size(X)
             call y%axpby(v(i), X(i), one_cdp) ! y = y + X[i]*v[i]
@@ -1729,7 +1729,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1))
+            allocate(Y(size(B, 2)), mold=X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &

@@ -148,9 +148,9 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b)       ; call wrk%zero()
-        allocate(V(kdim+1), source=b) ; call zero_basis(V)
-        allocate(Z(kdim+1), source=b) ; call zero_basis(Z)
+        allocate(wrk, mold=b)       ; call wrk%zero()
+        allocate(V(kdim+1), mold=b) ; call zero_basis(V)
+        allocate(Z(kdim+1), mold=b) ; call zero_basis(Z)
         allocate(H(kdim+1, kdim))   ; H = 0.0_sp
         allocate(e(kdim+1))         ; e = 0.0_sp
         allocate(c(kdim))           ; c = 0.0_sp
@@ -325,9 +325,9 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b)       ; call wrk%zero()
-        allocate(V(kdim+1), source=b) ; call zero_basis(V)
-        allocate(Z(kdim+1), source=b) ; call zero_basis(Z)
+        allocate(wrk, mold=b)       ; call wrk%zero()
+        allocate(V(kdim+1), mold=b) ; call zero_basis(V)
+        allocate(Z(kdim+1), mold=b) ; call zero_basis(Z)
         allocate(H(kdim+1, kdim))   ; H = 0.0_dp
         allocate(e(kdim+1))         ; e = 0.0_dp
         allocate(c(kdim))           ; c = 0.0_dp
@@ -502,9 +502,9 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b)       ; call wrk%zero()
-        allocate(V(kdim+1), source=b) ; call zero_basis(V)
-        allocate(Z(kdim+1), source=b) ; call zero_basis(Z)
+        allocate(wrk, mold=b)       ; call wrk%zero()
+        allocate(V(kdim+1), mold=b) ; call zero_basis(V)
+        allocate(Z(kdim+1), mold=b) ; call zero_basis(Z)
         allocate(H(kdim+1, kdim))   ; H = 0.0_sp
         allocate(e(kdim+1))         ; e = 0.0_sp
         allocate(c(kdim))           ; c = 0.0_sp
@@ -679,9 +679,9 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b)       ; call wrk%zero()
-        allocate(V(kdim+1), source=b) ; call zero_basis(V)
-        allocate(Z(kdim+1), source=b) ; call zero_basis(Z)
+        allocate(wrk, mold=b)       ; call wrk%zero()
+        allocate(V(kdim+1), mold=b) ; call zero_basis(V)
+        allocate(Z(kdim+1), mold=b) ; call zero_basis(Z)
         allocate(H(kdim+1, kdim))   ; H = 0.0_dp
         allocate(e(kdim+1))         ; e = 0.0_dp
         allocate(c(kdim))           ; c = 0.0_dp

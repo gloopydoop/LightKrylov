@@ -416,8 +416,8 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X); call residual%zero()
-        allocate(increment,source=X); call increment%zero()
+        allocate(residual, mold=X); call residual%zero()
+        allocate(increment,mold=X); call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
         call sys%reset_eval_counter('newton%init')
@@ -581,8 +581,8 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X); call residual%zero()
-        allocate(increment,source=X); call increment%zero()
+        allocate(residual, mold=X); call residual%zero()
+        allocate(increment,mold=X); call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
         call sys%reset_eval_counter('newton%init')
@@ -746,8 +746,8 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X); call residual%zero()
-        allocate(increment,source=X); call increment%zero()
+        allocate(residual, mold=X); call residual%zero()
+        allocate(increment,mold=X); call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
         call sys%reset_eval_counter('newton%init')
@@ -911,8 +911,8 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X); call residual%zero()
-        allocate(increment,source=X); call increment%zero()
+        allocate(residual, mold=X); call residual%zero()
+        allocate(increment,mold=X); call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
         call sys%reset_eval_counter('newton%init')
@@ -1041,8 +1041,8 @@ contains
         class(abstract_vector_rsp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, source=X)
-        allocate(residual, source=X); call residual%zero()
+        allocate(Xin, mold=X)
+        allocate(residual, mold=X); call residual%zero()
         step    = one_rsp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
         invphi2 = (3.0 - sqrt(5.0))/2.0  ! 1 / phi**2
@@ -1140,8 +1140,8 @@ contains
         class(abstract_vector_rdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, source=X)
-        allocate(residual, source=X); call residual%zero()
+        allocate(Xin, mold=X)
+        allocate(residual, mold=X); call residual%zero()
         step    = one_rdp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
         invphi2 = (3.0 - sqrt(5.0))/2.0  ! 1 / phi**2
@@ -1239,8 +1239,8 @@ contains
         class(abstract_vector_csp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, source=X)
-        allocate(residual, source=X); call residual%zero()
+        allocate(Xin, mold=X)
+        allocate(residual, mold=X); call residual%zero()
         step    = one_csp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
         invphi2 = (3.0 - sqrt(5.0))/2.0  ! 1 / phi**2
@@ -1338,8 +1338,8 @@ contains
         class(abstract_vector_cdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, source=X)
-        allocate(residual, source=X); call residual%zero()
+        allocate(Xin, mold=X)
+        allocate(residual, mold=X); call residual%zero()
         step    = one_cdp
         invphi  = (sqrt(5.0) - 1.0)/2.0  ! 1 / phi
         invphi2 = (3.0 - sqrt(5.0))/2.0  ! 1 / phi**2

@@ -1922,7 +1922,7 @@ contains
         allocate(eigvals(nev)) ; eigvals = 0.0_sp
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1)) ; call zero_basis(Xwrk)
+        allocate(Xwrk(kdim_+1), mold=X(1)) ; call zero_basis(Xwrk)
         if (present(x0)) then
             call copy(Xwrk(1), x0)
             x0_norm = x0%norm(); call Xwrk(1)%scal(one_rsp/x0_norm)
@@ -2081,7 +2081,7 @@ contains
         allocate(eigvals(nev)) ; eigvals = 0.0_dp
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1)) ; call zero_basis(Xwrk)
+        allocate(Xwrk(kdim_+1), mold=X(1)) ; call zero_basis(Xwrk)
         if (present(x0)) then
             call copy(Xwrk(1), x0)
             x0_norm = x0%norm(); call Xwrk(1)%scal(one_rdp/x0_norm)
@@ -2239,7 +2239,7 @@ contains
         allocate(eigvals(nev)) ; eigvals = 0.0_sp
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1)) ; call zero_basis(Xwrk)
+        allocate(Xwrk(kdim_+1), mold=X(1)) ; call zero_basis(Xwrk)
         if (present(x0)) then
             call copy(Xwrk(1), x0)
             x0_norm = x0%norm(); call Xwrk(1)%scal(one_csp/x0_norm)
@@ -2388,7 +2388,7 @@ contains
         allocate(eigvals(nev)) ; eigvals = 0.0_dp
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1)) ; call zero_basis(Xwrk)
+        allocate(Xwrk(kdim_+1), mold=X(1)) ; call zero_basis(Xwrk)
         if (present(x0)) then
             call copy(Xwrk(1), x0)
             x0_norm = x0%norm(); call Xwrk(1)%scal(one_cdp/x0_norm)
