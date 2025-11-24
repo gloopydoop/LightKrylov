@@ -1268,6 +1268,7 @@ contains
         ! Initialize output basis.
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1))
+            call zero_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1276,7 +1277,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            call Y(j)%zero()
+            ! call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_rsp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1422,6 +1423,7 @@ contains
         ! Initialize output basis.
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1))
+            call zero_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1430,7 +1432,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            call Y(j)%zero()
+            ! call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_rdp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1576,6 +1578,7 @@ contains
         ! Initialize output basis.
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1))
+            call zero_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1584,7 +1587,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            call Y(j)%zero()
+            ! call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_csp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1730,6 +1733,7 @@ contains
         ! Initialize output basis.
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1))
+            call zero_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1738,7 +1742,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            call Y(j)%zero()
+            ! call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_cdp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
