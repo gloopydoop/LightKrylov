@@ -1277,7 +1277,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            ! call Y(j)%zero()
+            call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_rsp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1432,7 +1432,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            ! call Y(j)%zero()
+            call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_rdp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1587,7 +1587,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            ! call Y(j)%zero()
+            call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_csp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
@@ -1742,7 +1742,7 @@ contains
         endif
 
         do j = 1, size(Y)
-            ! call Y(j)%zero()
+            call Y(j)%zero()
             do i = 1, size(X)
                 call Y(j)%axpby(B(i, j), X(i), one_cdp) ! y(j) = B(i,j)*X(i) + y(j)
             enddo
