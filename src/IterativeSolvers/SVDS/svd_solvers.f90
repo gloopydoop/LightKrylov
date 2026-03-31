@@ -78,6 +78,7 @@ contains
         ! Allocate working variables.
         allocate(Uwrk(kdim_+1), mold=U(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Uwrk)
         call zero_basis(Uwrk)
         if (present(u0)) then
             call copy(Uwrk(1), u0)
@@ -87,6 +88,7 @@ contains
         endif
         allocate(Vwrk(kdim_+1), mold=V(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Vwrk)
         call zero_basis(Vwrk)
         allocate(svdvals_wrk(kdim_), source=zero_rsp, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
@@ -142,6 +144,8 @@ contains
                 call V(i)%axpby(vmat(j, i), Vwrk(j), one_rsp)
             enddo
         enddo
+        call free_basis(Vwrk)
+        call free_basis(Uwrk)
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end procedure
 
@@ -173,6 +177,7 @@ contains
         ! Allocate working variables.
         allocate(Uwrk(kdim_+1), mold=U(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Uwrk)
         call zero_basis(Uwrk)
         if (present(u0)) then
             call copy(Uwrk(1), u0)
@@ -182,6 +187,7 @@ contains
         endif
         allocate(Vwrk(kdim_+1), mold=V(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Vwrk)
         call zero_basis(Vwrk)
         allocate(svdvals_wrk(kdim_), source=zero_rdp, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
@@ -237,6 +243,8 @@ contains
                 call V(i)%axpby(vmat(j, i), Vwrk(j), one_rdp)
             enddo
         enddo
+        call free_basis(Vwrk)
+        call free_basis(Uwrk)
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end procedure
 
@@ -268,6 +276,7 @@ contains
         ! Allocate working variables.
         allocate(Uwrk(kdim_+1), mold=U(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Uwrk)
         call zero_basis(Uwrk)
         if (present(u0)) then
             call copy(Uwrk(1), u0)
@@ -277,6 +286,7 @@ contains
         endif
         allocate(Vwrk(kdim_+1), mold=V(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Vwrk)
         call zero_basis(Vwrk)
         allocate(svdvals_wrk(kdim_), source=zero_rsp, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
@@ -332,6 +342,8 @@ contains
                 call V(i)%axpby(vmat(j, i), Vwrk(j), one_csp)
             enddo
         enddo
+        call free_basis(Vwrk)
+        call free_basis(Uwrk)
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end procedure
 
@@ -363,6 +375,7 @@ contains
         ! Allocate working variables.
         allocate(Uwrk(kdim_+1), mold=U(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Uwrk)
         call zero_basis(Uwrk)
         if (present(u0)) then
             call copy(Uwrk(1), u0)
@@ -372,6 +385,7 @@ contains
         endif
         allocate(Vwrk(kdim_+1), mold=V(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call init_basis(Vwrk)
         call zero_basis(Vwrk)
         allocate(svdvals_wrk(kdim_), source=zero_rdp, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
@@ -427,8 +441,9 @@ contains
                 call V(i)%axpby(vmat(j, i), Vwrk(j), one_cdp)
             enddo
         enddo
+        call free_basis(Vwrk)
+        call free_basis(Uwrk)
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end procedure
 
 end submodule
-

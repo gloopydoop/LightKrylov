@@ -422,9 +422,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call residual%init()
         call residual%zero()
         allocate(increment,source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call increment%init()
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
@@ -460,7 +462,13 @@ contains
                 call log_message(msg, this_module, this_procedure)
 
                 ! Define the Jacobian
-                sys%jacobian%X = X
+                if (allocated(sys%jacobian%X)) then
+                    call sys%jacobian%X%free()
+                    deallocate(sys%jacobian%X)
+                endif
+                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                call check_allocation(iostat, msg, this_module, this_procedure)
+                call sys%jacobian%X%init()
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -529,6 +537,8 @@ contains
             end select
         end if
 
+        call increment%free()
+        call residual%free()
         call sys%reset_eval_counter('newton%post')
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end subroutine newton_rsp
@@ -595,9 +605,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call residual%init()
         call residual%zero()
         allocate(increment,source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call increment%init()
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
@@ -633,7 +645,13 @@ contains
                 call log_message(msg, this_module, this_procedure)
 
                 ! Define the Jacobian
-                sys%jacobian%X = X
+                if (allocated(sys%jacobian%X)) then
+                    call sys%jacobian%X%free()
+                    deallocate(sys%jacobian%X)
+                endif
+                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                call check_allocation(iostat, msg, this_module, this_procedure)
+                call sys%jacobian%X%init()
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -702,6 +720,8 @@ contains
             end select
         end if
 
+        call increment%free()
+        call residual%free()
         call sys%reset_eval_counter('newton%post')
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end subroutine newton_rdp
@@ -768,9 +788,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call residual%init()
         call residual%zero()
         allocate(increment,source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call increment%init()
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
@@ -806,7 +828,13 @@ contains
                 call log_message(msg, this_module, this_procedure)
 
                 ! Define the Jacobian
-                sys%jacobian%X = X
+                if (allocated(sys%jacobian%X)) then
+                    call sys%jacobian%X%free()
+                    deallocate(sys%jacobian%X)
+                endif
+                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                call check_allocation(iostat, msg, this_module, this_procedure)
+                call sys%jacobian%X%init()
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -875,6 +903,8 @@ contains
             end select
         end if
 
+        call increment%free()
+        call residual%free()
         call sys%reset_eval_counter('newton%post')
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end subroutine newton_csp
@@ -941,9 +971,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call residual%init()
         call residual%zero()
         allocate(increment,source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call increment%init()
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
@@ -979,7 +1011,13 @@ contains
                 call log_message(msg, this_module, this_procedure)
 
                 ! Define the Jacobian
-                sys%jacobian%X = X
+                if (allocated(sys%jacobian%X)) then
+                    call sys%jacobian%X%free()
+                    deallocate(sys%jacobian%X)
+                endif
+                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                call check_allocation(iostat, msg, this_module, this_procedure)
+                call sys%jacobian%X%init()
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -1048,6 +1086,8 @@ contains
             end select
         end if
 
+        call increment%free()
+        call residual%free()
         call sys%reset_eval_counter('newton%post')
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end subroutine newton_cdp
@@ -1079,6 +1119,8 @@ contains
 
         allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call Xin%init()
+        call residual%init()
         call residual%zero()
         step    = one_rsp
         invphi  = (sqrt(5.0_sp) - 1.0_sp)/2.0_sp  ! 1 / phi
@@ -1151,6 +1193,8 @@ contains
             write(msg,'(A)') 'Full Newton step reduces the residual. Skip bisection.'
             call log_information(msg, this_module, this_procedure)
         end if
+        call residual%free()
+        call Xin%free()
     end subroutine increment_bisection_rsp
 
     subroutine increment_bisection_rdp(X, sys, increment, rold, tol, maxstep)
@@ -1179,6 +1223,8 @@ contains
 
         allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call Xin%init()
+        call residual%init()
         call residual%zero()
         step    = one_rdp
         invphi  = (sqrt(5.0_dp) - 1.0_dp)/2.0_dp  ! 1 / phi
@@ -1251,6 +1297,8 @@ contains
             write(msg,'(A)') 'Full Newton step reduces the residual. Skip bisection.'
             call log_information(msg, this_module, this_procedure)
         end if
+        call residual%free()
+        call Xin%free()
     end subroutine increment_bisection_rdp
 
     subroutine increment_bisection_csp(X, sys, increment, rold, tol, maxstep)
@@ -1279,6 +1327,8 @@ contains
 
         allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call Xin%init()
+        call residual%init()
         call residual%zero()
         step    = one_csp
         invphi  = (sqrt(5.0_sp) - 1.0_sp)/2.0_sp  ! 1 / phi
@@ -1351,6 +1401,8 @@ contains
             write(msg,'(A)') 'Full Newton step reduces the residual. Skip bisection.'
             call log_information(msg, this_module, this_procedure)
         end if
+        call residual%free()
+        call Xin%free()
     end subroutine increment_bisection_csp
 
     subroutine increment_bisection_cdp(X, sys, increment, rold, tol, maxstep)
@@ -1379,6 +1431,8 @@ contains
 
         allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call Xin%init()
+        call residual%init()
         call residual%zero()
         step    = one_cdp
         invphi  = (sqrt(5.0_dp) - 1.0_dp)/2.0_dp  ! 1 / phi
@@ -1451,6 +1505,8 @@ contains
             write(msg,'(A)') 'Full Newton step reduces the residual. Skip bisection.'
             call log_information(msg, this_module, this_procedure)
         end if
+        call residual%free()
+        call Xin%free()
     end subroutine increment_bisection_cdp
 
 

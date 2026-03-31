@@ -510,6 +510,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_matvec_${type[0]}$${kind}$")
+        call wrk%init()
         call wrk%zero()
 
         ! w = A @ x
@@ -528,6 +529,7 @@ contains
 
         ! y = alpha*w + beta*y
         call vec_out%axpby(self%alpha, wrk, self%beta)
+        call wrk%free()
     end subroutine axpby_matvec_${type[0]}$${kind}$
 
     subroutine axpby_rmatvec_${type[0]}$${kind}$(self, vec_in, vec_out)
@@ -544,6 +546,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_rmatvec_${type[0]}$${kind}$")
+        call wrk%init()
         call wrk%zero()
 
         ! w = A @ x
@@ -562,6 +565,7 @@ contains
 
         ! y = alpha*w + beta*y
         call vec_out%axpby(self%alpha, wrk, self%beta)
+        call wrk%free()
     end subroutine axpby_rmatvec_${type[0]}$${kind}$
 
     #:endfor

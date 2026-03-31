@@ -52,6 +52,8 @@ module LightKrylov_AbstractVectors
     public :: linear_combination
     public :: axpby_basis
     public :: zero_basis
+    public :: init_basis
+    public :: free_basis
     public :: copy
     public :: rand_basis
 
@@ -236,6 +238,20 @@ module LightKrylov_AbstractVectors
         module procedure zero_basis_cdp
     end interface
 
+    interface init_basis
+        module procedure init_basis_rsp
+        module procedure init_basis_rdp
+        module procedure init_basis_csp
+        module procedure init_basis_cdp
+    end interface
+
+    interface free_basis
+        module procedure free_basis_rsp
+        module procedure free_basis_rdp
+        module procedure free_basis_csp
+        module procedure free_basis_cdp
+    end interface
+
     interface copy
         !!  This interface provides methods to copy an array `X` of `abstract_vector` into
         !!  another array `Y`. Note that `Y` needs to be pre-allocated.
@@ -291,6 +307,11 @@ module LightKrylov_AbstractVectors
         !!  @warning
         !!  Users should not extend this abstract class to define their own types.
         !!  @endwarning
+    contains
+        procedure, pass(self), public :: init => init_abstract_vector
+        !! Hook called after allocating an `abstract_vector`.
+        procedure, pass(self), public :: free => free_abstract_vector
+        !! Hook called before deallocating an `abstract_vector`.
     end type abstract_vector
 
     !----------------------------------------------------------------------------
@@ -764,6 +785,16 @@ contains
     !-----------------------------------------------------------------------
     !-----     TYPE-BOUND PROCEDURES FOR THE ABSTRACT VECTOR TYPES     -----
     !-----------------------------------------------------------------------
+
+    subroutine init_abstract_vector(self)
+        implicit none(type, external)
+        class(abstract_vector), intent(inout) :: self
+    end subroutine init_abstract_vector
+
+    subroutine free_abstract_vector(self)
+        implicit none(type, external)
+        class(abstract_vector), intent(inout) :: self
+    end subroutine free_abstract_vector
 
     function norm_rsp(self) result(alpha)
         implicit none(type, external)
@@ -1293,6 +1324,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rsp")
+            call y%init()
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1326,6 +1358,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rsp")
+            call init_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1413,6 +1446,18 @@ contains
         call X%zero()
     end subroutine zero_basis_rsp
 
+    impure elemental subroutine init_basis_rsp(X)
+        implicit none(type, external)
+        class(abstract_vector_rsp), intent(inout) :: X
+        call X%init()
+    end subroutine init_basis_rsp
+
+    impure elemental subroutine free_basis_rsp(X)
+        implicit none(type, external)
+        class(abstract_vector_rsp), intent(inout) :: X
+        call X%free()
+    end subroutine free_basis_rsp
+
     impure elemental subroutine copy_vector_rsp(out, from)
         implicit none(type, external)
         class(abstract_vector_rsp), intent(in) :: from
@@ -1454,6 +1499,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rdp")
+            call y%init()
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1487,6 +1533,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rdp")
+            call init_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1574,6 +1621,18 @@ contains
         call X%zero()
     end subroutine zero_basis_rdp
 
+    impure elemental subroutine init_basis_rdp(X)
+        implicit none(type, external)
+        class(abstract_vector_rdp), intent(inout) :: X
+        call X%init()
+    end subroutine init_basis_rdp
+
+    impure elemental subroutine free_basis_rdp(X)
+        implicit none(type, external)
+        class(abstract_vector_rdp), intent(inout) :: X
+        call X%free()
+    end subroutine free_basis_rdp
+
     impure elemental subroutine copy_vector_rdp(out, from)
         implicit none(type, external)
         class(abstract_vector_rdp), intent(in) :: from
@@ -1615,6 +1674,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_csp")
+            call y%init()
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1648,6 +1708,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_csp")
+            call init_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1735,6 +1796,18 @@ contains
         call X%zero()
     end subroutine zero_basis_csp
 
+    impure elemental subroutine init_basis_csp(X)
+        implicit none(type, external)
+        class(abstract_vector_csp), intent(inout) :: X
+        call X%init()
+    end subroutine init_basis_csp
+
+    impure elemental subroutine free_basis_csp(X)
+        implicit none(type, external)
+        class(abstract_vector_csp), intent(inout) :: X
+        call X%free()
+    end subroutine free_basis_csp
+
     impure elemental subroutine copy_vector_csp(out, from)
         implicit none(type, external)
         class(abstract_vector_csp), intent(in) :: from
@@ -1776,6 +1849,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_cdp")
+            call y%init()
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1809,6 +1883,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_cdp")
+            call init_basis(Y)
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1895,6 +1970,18 @@ contains
         class(abstract_vector_cdp), intent(inout) :: X
         call X%zero()
     end subroutine zero_basis_cdp
+
+    impure elemental subroutine init_basis_cdp(X)
+        implicit none(type, external)
+        class(abstract_vector_cdp), intent(inout) :: X
+        call X%init()
+    end subroutine init_basis_cdp
+
+    impure elemental subroutine free_basis_cdp(X)
+        implicit none(type, external)
+        class(abstract_vector_cdp), intent(inout) :: X
+        call X%free()
+    end subroutine free_basis_cdp
 
     impure elemental subroutine copy_vector_cdp(out, from)
         implicit none(type, external)

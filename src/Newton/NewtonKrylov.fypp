@@ -305,9 +305,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call residual%init()
         call residual%zero()
         allocate(increment,source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call increment%init()
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_${kind}$_metadata()
@@ -343,7 +345,13 @@ contains
                 call log_message(msg, this_module, this_procedure)
 
                 ! Define the Jacobian
-                sys%jacobian%X = X
+                if (allocated(sys%jacobian%X)) then
+                    call sys%jacobian%X%free()
+                    deallocate(sys%jacobian%X)
+                endif
+                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                call check_allocation(iostat, msg, this_module, this_procedure)
+                call sys%jacobian%X%init()
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -412,6 +420,8 @@ contains
             end select
         end if
 
+        call increment%free()
+        call residual%free()
         call sys%reset_eval_counter('newton%post')
         if (time_lightkrylov()) call timer%stop(this_procedure)
     end subroutine newton_${type[0]}$${kind}$
@@ -449,6 +459,8 @@ contains
 
         allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
+        call Xin%init()
+        call residual%init()
         call residual%zero()
         step    = one_${type[0]}$${kind}$
         invphi  = (sqrt(5.0_${kind}$) - 1.0_${kind}$)/2.0_${kind}$  ! 1 / phi
@@ -521,6 +533,8 @@ contains
             write(msg,'(A)') 'Full Newton step reduces the residual. Skip bisection.'
             call log_information(msg, this_module, this_procedure)
         end if
+        call residual%free()
+        call Xin%free()
     end subroutine increment_bisection_${type[0]}$${kind}$
 
     #:endfor
