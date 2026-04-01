@@ -375,6 +375,12 @@ contains
         ! optional input argument
         chk_X_orthonormality = optval(if_chk_orthonormal, .true.) ! default to true!
 
+        if (size(X) == 0) then
+            if (present(beta)) beta = zero_rsp
+            if (time_lightkrylov()) call timer%stop(this_procedure)
+            return
+        end if
+
         ! check for zero vector
         if (y%norm() < atol_sp) info = 1
 
@@ -465,6 +471,12 @@ contains
 
         ! optional input argument
         chk_X_orthonormality = optval(if_chk_orthonormal, .true.) ! default to true!
+
+        if (size(X) == 0) then
+            if (present(beta)) beta = zero_rdp
+            if (time_lightkrylov()) call timer%stop(this_procedure)
+            return
+        end if
 
         ! check for zero vector
         if (y%norm() < atol_dp) info = 1
@@ -557,6 +569,12 @@ contains
         ! optional input argument
         chk_X_orthonormality = optval(if_chk_orthonormal, .true.) ! default to true!
 
+        if (size(X) == 0) then
+            if (present(beta)) beta = zero_csp
+            if (time_lightkrylov()) call timer%stop(this_procedure)
+            return
+        end if
+
         ! check for zero vector
         if (y%norm() < atol_sp) info = 1
 
@@ -647,6 +665,12 @@ contains
 
         ! optional input argument
         chk_X_orthonormality = optval(if_chk_orthonormal, .true.) ! default to true!
+
+        if (size(X) == 0) then
+            if (present(beta)) beta = zero_cdp
+            if (time_lightkrylov()) call timer%stop(this_procedure)
+            return
+        end if
 
         ! check for zero vector
         if (y%norm() < atol_dp) info = 1

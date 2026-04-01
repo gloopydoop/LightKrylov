@@ -422,11 +422,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call residual%init()
+        call init_like(residual, X)
         call residual%zero()
         allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call increment%init()
+        call init_like(increment, X)
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
@@ -468,7 +468,8 @@ contains
                 endif
                 allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
-                call sys%jacobian%X%init()
+                call init_like(sys%jacobian%X, X)
+                call copy(sys%jacobian%X, X)
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -605,11 +606,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call residual%init()
+        call init_like(residual, X)
         call residual%zero()
         allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call increment%init()
+        call init_like(increment, X)
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
@@ -651,7 +652,8 @@ contains
                 endif
                 allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
-                call sys%jacobian%X%init()
+                call init_like(sys%jacobian%X, X)
+                call copy(sys%jacobian%X, X)
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -788,11 +790,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call residual%init()
+        call init_like(residual, X)
         call residual%zero()
         allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call increment%init()
+        call init_like(increment, X)
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_sp_metadata()
@@ -834,7 +836,8 @@ contains
                 endif
                 allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
-                call sys%jacobian%X%init()
+                call init_like(sys%jacobian%X, X)
+                call copy(sys%jacobian%X, X)
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -971,11 +974,11 @@ contains
         maxstep_bisection = opts%maxstep_bisection
         allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call residual%init()
+        call init_like(residual, X)
         call residual%zero()
         allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call increment%init()
+        call init_like(increment, X)
         call increment%zero()
         ! Initialize metadata & reset eval counter
         newton_meta = newton_dp_metadata()
@@ -1017,7 +1020,8 @@ contains
                 endif
                 allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
-                call sys%jacobian%X%init()
+                call init_like(sys%jacobian%X, X)
+                call copy(sys%jacobian%X, X)
                 
                 ! Solve the linear system using GMRES.
                 call residual%chsgn(); call increment%zero()
@@ -1119,8 +1123,9 @@ contains
 
         allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Xin%init()
-        call residual%init()
+        call init_like(Xin, X)
+        call init_like(residual, X)
+        call copy(Xin, X)
         call residual%zero()
         step    = one_rsp
         invphi  = (sqrt(5.0_sp) - 1.0_sp)/2.0_sp  ! 1 / phi
@@ -1223,8 +1228,9 @@ contains
 
         allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Xin%init()
-        call residual%init()
+        call init_like(Xin, X)
+        call init_like(residual, X)
+        call copy(Xin, X)
         call residual%zero()
         step    = one_rdp
         invphi  = (sqrt(5.0_dp) - 1.0_dp)/2.0_dp  ! 1 / phi
@@ -1327,8 +1333,9 @@ contains
 
         allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Xin%init()
-        call residual%init()
+        call init_like(Xin, X)
+        call init_like(residual, X)
+        call copy(Xin, X)
         call residual%zero()
         step    = one_csp
         invphi  = (sqrt(5.0_sp) - 1.0_sp)/2.0_sp  ! 1 / phi
@@ -1431,8 +1438,9 @@ contains
 
         allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Xin%init()
-        call residual%init()
+        call init_like(Xin, X)
+        call init_like(residual, X)
+        call copy(Xin, X)
         call residual%zero()
         step    = one_cdp
         invphi  = (sqrt(5.0_dp) - 1.0_dp)/2.0_dp  ! 1 / phi

@@ -363,6 +363,7 @@ contains
         allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call copy(Xwrk, B)
         call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
@@ -642,6 +643,7 @@ contains
         allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call copy(Xwrk, B)
         call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
@@ -921,6 +923,7 @@ contains
         allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call copy(Xwrk, B)
         call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
@@ -1200,6 +1203,7 @@ contains
         allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call copy(Xwrk, B)
         call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.

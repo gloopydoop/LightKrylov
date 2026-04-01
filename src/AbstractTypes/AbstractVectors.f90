@@ -53,6 +53,7 @@ module LightKrylov_AbstractVectors
     public :: axpby_basis
     public :: zero_basis
     public :: init_basis
+    public :: init_like
     public :: free_basis
     public :: copy
     public :: rand_basis
@@ -243,6 +244,13 @@ module LightKrylov_AbstractVectors
         module procedure init_basis_rdp
         module procedure init_basis_csp
         module procedure init_basis_cdp
+    end interface
+
+    interface init_like
+        module procedure init_like_rsp
+        module procedure init_like_rdp
+        module procedure init_like_csp
+        module procedure init_like_cdp
     end interface
 
     interface free_basis
@@ -1324,7 +1332,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rsp")
-            call y%init()
+            call init_like(y, X(1))
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1358,7 +1366,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rsp")
-            call init_basis(Y)
+            call init_like(Y, X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1452,6 +1460,26 @@ contains
         call X%init()
     end subroutine init_basis_rsp
 
+    impure elemental subroutine init_like_rsp(X, mold)
+        implicit none(type, external)
+        class(abstract_vector_rsp), intent(inout) :: X
+        class(abstract_vector_rsp), intent(in) :: mold
+        select type (X)
+        type is (dense_vector_rsp)
+            select type (mold)
+            type is (dense_vector_rsp)
+                if (allocated(mold%data)) then
+                    X%n = size(mold%data)
+                else
+                    X%n = mold%n
+                end if
+            class default
+            end select
+        class default
+        end select
+        call X%init()
+    end subroutine init_like_rsp
+
     impure elemental subroutine free_basis_rsp(X)
         implicit none(type, external)
         class(abstract_vector_rsp), intent(inout) :: X
@@ -1500,7 +1528,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rdp")
-            call y%init()
+            call init_like(y, X(1))
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1534,7 +1562,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rdp")
-            call init_basis(Y)
+            call init_like(Y, X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1628,6 +1656,26 @@ contains
         call X%init()
     end subroutine init_basis_rdp
 
+    impure elemental subroutine init_like_rdp(X, mold)
+        implicit none(type, external)
+        class(abstract_vector_rdp), intent(inout) :: X
+        class(abstract_vector_rdp), intent(in) :: mold
+        select type (X)
+        type is (dense_vector_rdp)
+            select type (mold)
+            type is (dense_vector_rdp)
+                if (allocated(mold%data)) then
+                    X%n = size(mold%data)
+                else
+                    X%n = mold%n
+                end if
+            class default
+            end select
+        class default
+        end select
+        call X%init()
+    end subroutine init_like_rdp
+
     impure elemental subroutine free_basis_rdp(X)
         implicit none(type, external)
         class(abstract_vector_rdp), intent(inout) :: X
@@ -1676,7 +1724,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_csp")
-            call y%init()
+            call init_like(y, X(1))
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1710,7 +1758,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_csp")
-            call init_basis(Y)
+            call init_like(Y, X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1804,6 +1852,26 @@ contains
         call X%init()
     end subroutine init_basis_csp
 
+    impure elemental subroutine init_like_csp(X, mold)
+        implicit none(type, external)
+        class(abstract_vector_csp), intent(inout) :: X
+        class(abstract_vector_csp), intent(in) :: mold
+        select type (X)
+        type is (dense_vector_csp)
+            select type (mold)
+            type is (dense_vector_csp)
+                if (allocated(mold%data)) then
+                    X%n = size(mold%data)
+                else
+                    X%n = mold%n
+                end if
+            class default
+            end select
+        class default
+        end select
+        call X%init()
+    end subroutine init_like_csp
+
     impure elemental subroutine free_basis_csp(X)
         implicit none(type, external)
         class(abstract_vector_csp), intent(inout) :: X
@@ -1852,7 +1920,7 @@ contains
         if (.not. allocated(y)) then
             allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_cdp")
-            call y%init()
+            call init_like(y, X(1))
         endif
         call y%zero()
         ! Compute linear combination.
@@ -1886,7 +1954,7 @@ contains
         if (.not. allocated(Y)) then
             allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_cdp")
-            call init_basis(Y)
+            call init_like(Y, X(1))
         else
             if (size(Y) /= size(B, 2)) then
                 call stop_error("Krylov basis Y and combination matrix B have incompatible sizes.", &
@@ -1979,6 +2047,26 @@ contains
         class(abstract_vector_cdp), intent(inout) :: X
         call X%init()
     end subroutine init_basis_cdp
+
+    impure elemental subroutine init_like_cdp(X, mold)
+        implicit none(type, external)
+        class(abstract_vector_cdp), intent(inout) :: X
+        class(abstract_vector_cdp), intent(in) :: mold
+        select type (X)
+        type is (dense_vector_cdp)
+            select type (mold)
+            type is (dense_vector_cdp)
+                if (allocated(mold%data)) then
+                    X%n = size(mold%data)
+                else
+                    X%n = mold%n
+                end if
+            class default
+            end select
+        class default
+        end select
+        call X%init()
+    end subroutine init_like_cdp
 
     impure elemental subroutine free_basis_cdp(X)
         implicit none(type, external)

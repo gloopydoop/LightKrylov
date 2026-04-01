@@ -1080,7 +1080,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_matvec_rsp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1116,7 +1116,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_rmatvec_rsp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1152,7 +1152,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_matvec_rdp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1188,7 +1188,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_rmatvec_rdp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1224,7 +1224,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_matvec_csp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1260,7 +1260,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_rmatvec_csp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1296,7 +1296,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_matvec_cdp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x
@@ -1332,7 +1332,7 @@ contains
         ! Allocate working array.
         allocate(wrk, mold=vec_in, stat=iostat, errmsg=errmsg)
         call check_allocation(iostat, errmsg, this_module, "axpby_rmatvec_cdp")
-        call wrk%init()
+        call init_like(wrk, vec_in)
         call wrk%zero()
 
         ! w = A @ x

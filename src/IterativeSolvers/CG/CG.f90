@@ -126,15 +126,15 @@ contains
         ! Initialize vectors.
         allocate(r, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call r%init()
+        call init_like(r, b)
         call r%zero()
         allocate(p, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call p%init()
+        call init_like(p, b)
         call p%zero()
         allocate(Ap, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Ap%init()
+        call init_like(Ap, b)
         call Ap%zero()
 
          ! Initialize meta & reset matvec counter
@@ -147,7 +147,7 @@ contains
         if (ifprecond) then
             allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
-            call z%init()
+            call init_like(z, r)
         endif
 
         ! Compute initial residual r = b - Ax.
@@ -272,15 +272,15 @@ contains
         ! Initialize vectors.
         allocate(r, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call r%init()
+        call init_like(r, b)
         call r%zero()
         allocate(p, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call p%init()
+        call init_like(p, b)
         call p%zero()
         allocate(Ap, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Ap%init()
+        call init_like(Ap, b)
         call Ap%zero()
 
          ! Initialize meta & reset matvec counter
@@ -293,7 +293,7 @@ contains
         if (ifprecond) then
             allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
-            call z%init()
+            call init_like(z, r)
         endif
 
         ! Compute initial residual r = b - Ax.
@@ -418,15 +418,15 @@ contains
         ! Initialize vectors.
         allocate(r, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call r%init()
+        call init_like(r, b)
         call r%zero()
         allocate(p, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call p%init()
+        call init_like(p, b)
         call p%zero()
         allocate(Ap, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Ap%init()
+        call init_like(Ap, b)
         call Ap%zero()
 
          ! Initialize meta & reset matvec counter
@@ -439,7 +439,7 @@ contains
         if (ifprecond) then
             allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
-            call z%init()
+            call init_like(z, r)
         endif
 
         ! Compute initial residual r = b - Ax.
@@ -564,15 +564,15 @@ contains
         ! Initialize vectors.
         allocate(r, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call r%init()
+        call init_like(r, b)
         call r%zero()
         allocate(p, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call p%init()
+        call init_like(p, b)
         call p%zero()
         allocate(Ap, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
-        call Ap%init()
+        call init_like(Ap, b)
         call Ap%zero()
 
          ! Initialize meta & reset matvec counter
@@ -585,7 +585,7 @@ contains
         if (ifprecond) then
             allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
-            call z%init()
+            call init_like(z, r)
         endif
 
         ! Compute initial residual r = b - Ax.
