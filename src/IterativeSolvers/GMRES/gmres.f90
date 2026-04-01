@@ -194,7 +194,7 @@ contains
 
             gmres_iter: do k = 1, kdim
                 !> Preconditioner.
-                wrk = V(k) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
+                call copy(wrk, V(k)) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
 
                 !-----------------------------------------
                 !-----     Arnoldi factorization     -----
@@ -390,7 +390,7 @@ contains
 
             gmres_iter: do k = 1, kdim
                 !> Preconditioner.
-                wrk = V(k) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
+                call copy(wrk, V(k)) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
 
                 !-----------------------------------------
                 !-----     Arnoldi factorization     -----
@@ -586,7 +586,7 @@ contains
 
             gmres_iter: do k = 1, kdim
                 !> Preconditioner.
-                wrk = V(k) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
+                call copy(wrk, V(k)) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
 
                 !-----------------------------------------
                 !-----     Arnoldi factorization     -----
@@ -782,7 +782,7 @@ contains
 
             gmres_iter: do k = 1, kdim
                 !> Preconditioner.
-                wrk = V(k) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
+                call copy(wrk, V(k)) ; if (ifprecond) call preconditioner%apply(wrk, k, beta, tol)
 
                 !-----------------------------------------
                 !-----     Arnoldi factorization     -----
