@@ -137,6 +137,7 @@ contains
 
         ! Singular vectors.
         k = min(k, kdim_) ; info = k
+        call init_basis(U) ; call init_basis(V)
         call zero_basis(U) ; call zero_basis(V)
         do i = 1, nsv
             do j = 1, k
@@ -236,6 +237,7 @@ contains
 
         ! Singular vectors.
         k = min(k, kdim_) ; info = k
+        call init_basis(U) ; call init_basis(V)
         call zero_basis(U) ; call zero_basis(V)
         do i = 1, nsv
             do j = 1, k
@@ -335,6 +337,7 @@ contains
 
         ! Singular vectors.
         k = min(k, kdim_) ; info = k
+        call init_basis(U) ; call init_basis(V)
         call zero_basis(U) ; call zero_basis(V)
         do i = 1, nsv
             do j = 1, k
@@ -434,6 +437,7 @@ contains
 
         ! Singular vectors.
         k = min(k, kdim_) ; info = k
+        call init_basis(U) ; call init_basis(V)
         call zero_basis(U) ; call zero_basis(V)
         do i = 1, nsv
             do j = 1, k

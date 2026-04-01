@@ -240,6 +240,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Normalize input vector and initialize Krylov subspace.
+        call c%init()
         beta = b%norm()
         if (beta == 0.0_sp) then
             ! Input is zero => Output is zero.
@@ -362,6 +363,7 @@ contains
         allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
         call qr(Xwrk, R, perm, info) ; call permcols(R, invperm(perm))
@@ -517,6 +519,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Normalize input vector and initialize Krylov subspace.
+        call c%init()
         beta = b%norm()
         if (beta == 0.0_dp) then
             ! Input is zero => Output is zero.
@@ -639,6 +642,7 @@ contains
         allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
         call qr(Xwrk, R, perm, info) ; call permcols(R, invperm(perm))
@@ -794,6 +798,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Normalize input vector and initialize Krylov subspace.
+        call c%init()
         beta = b%norm()
         if (beta == 0.0_sp) then
             ! Input is zero => Output is zero.
@@ -916,6 +921,7 @@ contains
         allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
         call qr(Xwrk, R, perm, info) ; call permcols(R, invperm(perm))
@@ -1071,6 +1077,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Normalize input vector and initialize Krylov subspace.
+        call c%init()
         beta = b%norm()
         if (beta == 0.0_dp) then
             ! Input is zero => Output is zero.
@@ -1193,6 +1200,7 @@ contains
         allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
+        call init_basis(C)
 
         ! Normalize input matrix and initialize Krylov subspace.
         call qr(Xwrk, R, perm, info) ; call permcols(R, invperm(perm))

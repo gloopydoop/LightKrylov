@@ -2023,6 +2023,7 @@ contains
         end block
 
         ! Construct eigenvectors.
+        call init_basis(X)
         do i = 1, nev
             call X(i)%zero()
             do j = 1, k
@@ -2192,6 +2193,7 @@ contains
         end block
 
         ! Construct eigenvectors.
+        call init_basis(X)
         do i = 1, nev
             call X(i)%zero()
             do j = 1, k
@@ -2351,6 +2353,7 @@ contains
         end block
 
         ! Construct eigenvectors.
+        call init_basis(X)
         do i = 1, nev
             call X(i)%zero()
             do j = 1, k
@@ -2510,6 +2513,7 @@ contains
         end block
 
         ! Construct eigenvectors.
+        call init_basis(X)
         do i = 1, nev
             call X(i)%zero()
             do j = 1, k
