@@ -755,6 +755,7 @@ contains
         class(abstract_vector_${type[0]}$${kind}$), intent(inout) :: out
         ! Copy array.
         call out%init()
+        call out%zero()
         call out%axpby(one_${type[0]}$${kind}$, from, zero_${type[0]}$${kind}$)
     end subroutine copy_vector_${type[0]}$${kind}$
 
