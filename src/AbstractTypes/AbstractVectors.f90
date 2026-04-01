@@ -1489,7 +1489,7 @@ contains
     impure elemental subroutine copy_vector_rsp(out, from)
         implicit none(type, external)
         class(abstract_vector_rsp), intent(in) :: from
-        class(abstract_vector_rsp), intent(out) :: out
+        class(abstract_vector_rsp), intent(inout) :: out
         ! Copy array.
         call out%init()
         call out%axpby(one_rsp, from, zero_rsp)
@@ -1685,7 +1685,7 @@ contains
     impure elemental subroutine copy_vector_rdp(out, from)
         implicit none(type, external)
         class(abstract_vector_rdp), intent(in) :: from
-        class(abstract_vector_rdp), intent(out) :: out
+        class(abstract_vector_rdp), intent(inout) :: out
         ! Copy array.
         call out%init()
         call out%axpby(one_rdp, from, zero_rdp)
@@ -1881,7 +1881,7 @@ contains
     impure elemental subroutine copy_vector_csp(out, from)
         implicit none(type, external)
         class(abstract_vector_csp), intent(in) :: from
-        class(abstract_vector_csp), intent(out) :: out
+        class(abstract_vector_csp), intent(inout) :: out
         ! Copy array.
         call out%init()
         call out%axpby(one_csp, from, zero_csp)
@@ -2077,7 +2077,7 @@ contains
     impure elemental subroutine copy_vector_cdp(out, from)
         implicit none(type, external)
         class(abstract_vector_cdp), intent(in) :: from
-        class(abstract_vector_cdp), intent(out) :: out
+        class(abstract_vector_cdp), intent(inout) :: out
         ! Copy array.
         call out%init()
         call out%axpby(one_cdp, from, zero_cdp)
