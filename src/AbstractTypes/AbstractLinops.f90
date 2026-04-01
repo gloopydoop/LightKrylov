@@ -147,7 +147,7 @@ module LightKrylov_AbstractLinops
             !! Linear operator \(\mathbf{A}\).
             class(abstract_vector_rdp), intent(in)  :: vec_in
             !! Vector to be multiplied by \(\mathbf{A}\).
-            class(abstract_vector_rdp), intent(out) :: vec_out
+            class(abstract_vector_rdp), intent(inout) :: vec_out
             !! Result of the matrix-vector product.
         end subroutine abstract_matvec_rdp
     end interface
@@ -543,7 +543,7 @@ module LightKrylov_AbstractLinops
             !! Linear operator \(\mathbf{A}\).
             class(abstract_vector_rdp), intent(in)  :: vec_in
             !! Vector to be multiplied by \(\mathbf{A}\).
-            class(abstract_vector_rdp), intent(out) :: vec_out
+            class(abstract_vector_rdp), intent(inout) :: vec_out
             !! Result of the matrix-vector product.
         end subroutine abstract_sym_matvec_rdp
     end interface
@@ -808,7 +808,7 @@ contains
         implicit none(type, external)
         class(abstract_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         ! internal
         character(len=128) :: msg
         self%matvec_counter = self%matvec_counter + 1
@@ -827,7 +827,7 @@ contains
         implicit none(type, external)
         class(abstract_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         ! internal 
         character(len=128) :: msg
         self%rmatvec_counter = self%rmatvec_counter + 1
@@ -845,7 +845,7 @@ contains
         implicit none(type, external)
         class(abstract_sym_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         ! internal
         character(len=128) :: msg
         self%matvec_counter = self%matvec_counter + 1
@@ -987,7 +987,7 @@ contains
         implicit none(type, external)
         class(Id_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         call copy(vec_out, vec_in)
     end subroutine id_matvec_rdp
     subroutine id_matvec_csp(self, vec_in, vec_out)
@@ -1024,7 +1024,7 @@ contains
         implicit none(type, external)
         class(scaled_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         call self%A%apply_matvec(vec_in, vec_out) ; call vec_out%scal(self%sigma)
     end subroutine scaled_matvec_rdp
 
@@ -1032,7 +1032,7 @@ contains
         implicit none(type, external)
         class(scaled_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         call self%A%apply_rmatvec(vec_in, vec_out) ; call vec_out%scal(self%sigma)
     end subroutine scaled_rmatvec_rdp
     subroutine scaled_matvec_csp(self, vec_in, vec_out)
@@ -1142,7 +1142,7 @@ contains
         implicit none(type, external)
         class(axpby_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
 
         ! Working array.
         class(abstract_vector_rdp), allocatable :: wrk
@@ -1178,7 +1178,7 @@ contains
         implicit none(type, external)
         class(axpby_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
 
         ! Working array.
         class(abstract_vector_rdp), allocatable :: wrk
@@ -1401,7 +1401,7 @@ contains
         implicit none(type, external)
         class(adjoint_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         call self%A%apply_rmatvec(vec_in, vec_out)
     end subroutine adjoint_matvec_rdp
 
@@ -1409,7 +1409,7 @@ contains
         implicit none(type, external)
         class(adjoint_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         call self%A%apply_matvec(vec_in, vec_out)
     end subroutine adjoint_rmatvec_rdp
 
@@ -1526,7 +1526,7 @@ contains
         implicit none(type, external)
         class(dense_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         select type(vec_in)
         type is(dense_vector_rdp)
             select type(vec_out)
@@ -1551,7 +1551,7 @@ contains
         implicit none(type, external)
         class(dense_linop_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in) :: vec_in
-        class(abstract_vector_rdp), intent(out) :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         select type(vec_in)
         type is(dense_vector_rdp)
             select type(vec_out)

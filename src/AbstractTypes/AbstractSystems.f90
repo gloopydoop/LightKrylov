@@ -120,7 +120,7 @@ module LightKrylov_AbstractSystems
             !! System
             class(abstract_vector_rdp), intent(in)  :: vec_in
             !! State
-            class(abstract_vector_rdp), intent(out) :: vec_out
+            class(abstract_vector_rdp), intent(inout) :: vec_out
             !! Response
             real(dp),                   intent(in)  :: atol
             !! Solver tolerance
@@ -313,7 +313,7 @@ contains
         implicit none(type, external)
         class(abstract_system_rdp), intent(inout) :: self
         class(abstract_vector_rdp), intent(in)    :: vec_in
-        class(abstract_vector_rdp), intent(out)   :: vec_out
+        class(abstract_vector_rdp), intent(inout) :: vec_out
         real(dp),                             intent(in)    :: atol
         ! internal
         character(len=128) :: msg
