@@ -1322,7 +1322,7 @@ contains
 
         ! Initialize output vector.
         if (.not. allocated(y)) then
-            allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rsp")
             call y%init()
         endif
@@ -1356,7 +1356,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rsp")
             call init_basis(Y)
         else
@@ -1498,7 +1498,7 @@ contains
 
         ! Initialize output vector.
         if (.not. allocated(y)) then
-            allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_rdp")
             call y%init()
         endif
@@ -1532,7 +1532,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_rdp")
             call init_basis(Y)
         else
@@ -1674,7 +1674,7 @@ contains
 
         ! Initialize output vector.
         if (.not. allocated(y)) then
-            allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_csp")
             call y%init()
         endif
@@ -1708,7 +1708,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_csp")
             call init_basis(Y)
         else
@@ -1850,7 +1850,7 @@ contains
 
         ! Initialize output vector.
         if (.not. allocated(y)) then
-            allocate(y, source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(y, mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_vector_cdp")
             call y%init()
         endif
@@ -1884,7 +1884,7 @@ contains
 
         ! Initialize output basis.
         if (.not. allocated(Y)) then
-            allocate(Y(size(B, 2)), source=X(1), stat=iostat, errmsg=errmsg)
+            allocate(Y(size(B, 2)), mold=X(1), stat=iostat, errmsg=errmsg)
             call check_allocation(iostat, errmsg, this_module, "linear_combination_matrix_cdp")
             call init_basis(Y)
         else

@@ -231,7 +231,7 @@ contains
 
         ! Allocate arrays.
         allocate(X(nk+1), Xwrk, &
-                 source=b, stat=iostat, errmsg=msg)
+                 mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call Xwrk%init()
@@ -355,12 +355,12 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         allocate(X(p*(nk+1)), Cwrk(p), &
-                 source=B(1), stat=iostat, errmsg=msg)
+                 mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call init_basis(Cwrk)
 
-        allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
+        allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call init_basis(C)
@@ -510,7 +510,7 @@ contains
 
         ! Allocate arrays.
         allocate(X(nk+1), Xwrk, &
-                 source=b, stat=iostat, errmsg=msg)
+                 mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call Xwrk%init()
@@ -634,12 +634,12 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         allocate(X(p*(nk+1)), Cwrk(p), &
-                 source=B(1), stat=iostat, errmsg=msg)
+                 mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call init_basis(Cwrk)
 
-        allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
+        allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call init_basis(C)
@@ -789,7 +789,7 @@ contains
 
         ! Allocate arrays.
         allocate(X(nk+1), Xwrk, &
-                 source=b, stat=iostat, errmsg=msg)
+                 mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call Xwrk%init()
@@ -913,12 +913,12 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         allocate(X(p*(nk+1)), Cwrk(p), &
-                 source=B(1), stat=iostat, errmsg=msg)
+                 mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call init_basis(Cwrk)
 
-        allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
+        allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call init_basis(C)
@@ -1068,7 +1068,7 @@ contains
 
         ! Allocate arrays.
         allocate(X(nk+1), Xwrk, &
-                 source=b, stat=iostat, errmsg=msg)
+                 mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call Xwrk%init()
@@ -1192,12 +1192,12 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         allocate(X(p*(nk+1)), Cwrk(p), &
-                 source=B(1), stat=iostat, errmsg=msg)
+                 mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(X)
         call init_basis(Cwrk)
 
-        allocate(Xwrk(p), source=B, stat=iostat, errmsg=msg)
+        allocate(Xwrk(p), mold=B(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call init_basis(C)

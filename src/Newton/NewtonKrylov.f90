@@ -420,11 +420,11 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X, stat=iostat, errmsg=msg)
+        allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call residual%init()
         call residual%zero()
-        allocate(increment,source=X, stat=iostat, errmsg=msg)
+        allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call increment%init()
         call increment%zero()
@@ -466,7 +466,7 @@ contains
                     call sys%jacobian%X%free()
                     deallocate(sys%jacobian%X)
                 endif
-                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
                 call sys%jacobian%X%init()
                 
@@ -603,11 +603,11 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X, stat=iostat, errmsg=msg)
+        allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call residual%init()
         call residual%zero()
-        allocate(increment,source=X, stat=iostat, errmsg=msg)
+        allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call increment%init()
         call increment%zero()
@@ -649,7 +649,7 @@ contains
                     call sys%jacobian%X%free()
                     deallocate(sys%jacobian%X)
                 endif
-                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
                 call sys%jacobian%X%init()
                 
@@ -786,11 +786,11 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X, stat=iostat, errmsg=msg)
+        allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call residual%init()
         call residual%zero()
-        allocate(increment,source=X, stat=iostat, errmsg=msg)
+        allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call increment%init()
         call increment%zero()
@@ -832,7 +832,7 @@ contains
                     call sys%jacobian%X%free()
                     deallocate(sys%jacobian%X)
                 endif
-                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
                 call sys%jacobian%X%init()
                 
@@ -969,11 +969,11 @@ contains
         info = 0 
         maxiter = opts%maxiter
         maxstep_bisection = opts%maxstep_bisection
-        allocate(residual, source=X, stat=iostat, errmsg=msg)
+        allocate(residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call residual%init()
         call residual%zero()
-        allocate(increment,source=X, stat=iostat, errmsg=msg)
+        allocate(increment,mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call increment%init()
         call increment%zero()
@@ -1015,7 +1015,7 @@ contains
                     call sys%jacobian%X%free()
                     deallocate(sys%jacobian%X)
                 endif
-                allocate(sys%jacobian%X, source=X, stat=iostat, errmsg=msg)
+                allocate(sys%jacobian%X, mold=X, stat=iostat, errmsg=msg)
                 call check_allocation(iostat, msg, this_module, this_procedure)
                 call sys%jacobian%X%init()
                 
@@ -1117,7 +1117,7 @@ contains
         class(abstract_vector_rsp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
+        allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call Xin%init()
         call residual%init()
@@ -1221,7 +1221,7 @@ contains
         class(abstract_vector_rdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
+        allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call Xin%init()
         call residual%init()
@@ -1325,7 +1325,7 @@ contains
         class(abstract_vector_csp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
+        allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call Xin%init()
         call residual%init()
@@ -1429,7 +1429,7 @@ contains
         class(abstract_vector_cdp), allocatable :: Xin, residual
         character(len=256) :: msg
 
-        allocate(Xin, residual, source=X, stat=iostat, errmsg=msg)
+        allocate(Xin, residual, mold=X, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call Xin%init()
         call residual%init()

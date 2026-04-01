@@ -147,11 +147,11 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b, stat=iostat, errmsg=msg)
+        allocate(wrk, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call wrk%init()
         call wrk%zero()
-        allocate(V(kdim+1), source=b, stat=iostat, errmsg=msg)
+        allocate(V(kdim+1), mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(V)
         call zero_basis(V)
@@ -343,11 +343,11 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b, stat=iostat, errmsg=msg)
+        allocate(wrk, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call wrk%init()
         call wrk%zero()
-        allocate(V(kdim+1), source=b, stat=iostat, errmsg=msg)
+        allocate(V(kdim+1), mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(V)
         call zero_basis(V)
@@ -539,11 +539,11 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b, stat=iostat, errmsg=msg)
+        allocate(wrk, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call wrk%init()
         call wrk%zero()
-        allocate(V(kdim+1), source=b, stat=iostat, errmsg=msg)
+        allocate(V(kdim+1), mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(V)
         call zero_basis(V)
@@ -735,11 +735,11 @@ contains
         trans = optval(transpose, .false.)
 
         ! Initialize working variables.
-        allocate(wrk, source=b, stat=iostat, errmsg=msg)
+        allocate(wrk, mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call wrk%init()
         call wrk%zero()
-        allocate(V(kdim+1), source=b, stat=iostat, errmsg=msg)
+        allocate(V(kdim+1), mold=b, stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(V)
         call zero_basis(V)

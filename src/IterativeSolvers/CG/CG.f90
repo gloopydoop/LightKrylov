@@ -145,7 +145,7 @@ contains
 
         associate(ifprecond => present(preconditioner))
         if (ifprecond) then
-            allocate(z, source=r, stat=iostat, errmsg=msg)
+            allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
             call z%init()
         endif
@@ -291,7 +291,7 @@ contains
 
         associate(ifprecond => present(preconditioner))
         if (ifprecond) then
-            allocate(z, source=r, stat=iostat, errmsg=msg)
+            allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
             call z%init()
         endif
@@ -437,7 +437,7 @@ contains
 
         associate(ifprecond => present(preconditioner))
         if (ifprecond) then
-            allocate(z, source=r, stat=iostat, errmsg=msg)
+            allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
             call z%init()
         endif
@@ -583,7 +583,7 @@ contains
 
         associate(ifprecond => present(preconditioner))
         if (ifprecond) then
-            allocate(z, source=r, stat=iostat, errmsg=msg)
+            allocate(z, mold=r, stat=iostat, errmsg=msg)
             call check_allocation(iostat, msg, this_module, this_procedure)
             call z%init()
         endif

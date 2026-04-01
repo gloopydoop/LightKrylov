@@ -1931,7 +1931,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1), stat=iostat, errmsg=msg)
+        allocate(Xwrk(kdim_+1), mold=X(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call zero_basis(Xwrk)
@@ -2101,7 +2101,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1), stat=iostat, errmsg=msg)
+        allocate(Xwrk(kdim_+1), mold=X(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call zero_basis(Xwrk)
@@ -2270,7 +2270,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1), stat=iostat, errmsg=msg)
+        allocate(Xwrk(kdim_+1), mold=X(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call zero_basis(Xwrk)
@@ -2430,7 +2430,7 @@ contains
         call check_allocation(iostat, msg, this_module, this_procedure)
 
         ! Allocate working variables.
-        allocate(Xwrk(kdim_+1), source=X(1), stat=iostat, errmsg=msg)
+        allocate(Xwrk(kdim_+1), mold=X(1), stat=iostat, errmsg=msg)
         call check_allocation(iostat, msg, this_module, this_procedure)
         call init_basis(Xwrk)
         call zero_basis(Xwrk)
